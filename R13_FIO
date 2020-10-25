@@ -1,0 +1,49 @@
+Rule 12. Input Output (FIO)
+FIO12-J. Provide methods to read and write little-endian data. Given the noncompliant code below:
+
+try {
+  DataInputStream dis = null;
+  try {
+    dis = new DataInputStream(new FileInputStream("data"));
+    // Little-endian data might be read as big-endian
+    int serialNumber = dis.readInt();
+  } catch (IOException x) {
+    // Handle error
+  } finally {
+    if (dis != null) {
+      try {
+       dis.close();
+      } catch (IOException e) {
+      // Handle error
+      }
+    }
+  }
+}
+C
+Correct the code as shown in the compliant solution below:
+
+try {
+  DataInputStream dis = null;
+  try {
+    dis = new DataInputStream( new FileInputStream("data"));
+    byte[] buffer = new byte[4];
+    int bytesRead = dis.read(buffer);  // Bytes are read into buffer
+    if (bytesRead != 4) {
+      throw new IOException("Unexpected End of Stream");
+    }
+    int serialNumber =
+        ByteBuffer.wrap(buffer).order(ByteOrder.LITTLE_ENDIAN).getInt();
+  } finally {
+    if (dis != null) {
+  try {
+    dis.close();
+  } catch (IOException x) {
+    // Handle error
+  }
+    }
+  }
+} catch (IOException x) {
+  // Handle error
+}
+
+Refer to: Rule 12. Input Output (FIO).
