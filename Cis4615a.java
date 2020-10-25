@@ -8,7 +8,8 @@
  * - Added " - from the class of CIS4615 - Fall 2019 - UCF"
  *  % java Cis4615a
  *  Hello, World - from the class of CIS4615 - Fall 2019 - UCF
- *  %
+ *  % java Cis4615a - 2020
+ *  Replaced semester with student name
  *
  ******************************************************************************/
 
@@ -16,7 +17,7 @@ public class Cis4615a {
 
     public static void main(String[] args) {
         // Prints "Hello, World" to the terminal window.
-        System.out.println("Hello, World - from the class of CIS4615 - Fall 2019 - UCF");
+        System.out.println("Hello, World - from Daniel Borowsky");
     }
 
 }
