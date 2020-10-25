@@ -1,4 +1,4 @@
-Rule 06. Serialization (SER).
+Rule 14. Serialization (SER).
 SER06-J. Make defensive copies of private mutable components during deserialization
 Given the noncompliant code below:
 
@@ -26,4 +26,4 @@ private void readObject(ObjectInputStream ois) throws IOException, ClassNotFound
   // Perform validation if necessary
 }
 
-Refer to: Rule 06. Serializations (SER).
+Refer to: Rule 14. Serializations (SER).
